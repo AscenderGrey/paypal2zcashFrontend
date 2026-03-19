@@ -1,0 +1,98 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0A0A0A;
+  --foreground: #FAFAFA;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+/* Custom range slider for Zcash gold accent */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: #F4B728;
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Animations */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-6px); }
+  40%, 80% { transform: translateX(6px); }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes spin-gold {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+.animate-shake { animation: shake 0.4s ease-in-out; }
+.animate-fade-up { animation: fade-up 0.6s ease-out both; }
+.animate-fade-in { animation: fade-in 0.4s ease-out both; }
+.animate-scale-in { animation: scale-in 0.3s ease-out both; }
+.animate-spin-gold { animation: spin-gold 1s linear infinite; }
+.animate-pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
+
+/* Stagger delays for children */
+.stagger > *:nth-child(1) { animation-delay: 0ms; }
+.stagger > *:nth-child(2) { animation-delay: 100ms; }
+.stagger > *:nth-child(3) { animation-delay: 200ms; }
+.stagger > *:nth-child(4) { animation-delay: 300ms; }
+.stagger > *:nth-child(5) { animation-delay: 400ms; }
+.stagger > *:nth-child(6) { animation-delay: 500ms; }
+
+/* Scroll reveal: hidden by default, revealed by JS */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* Star rating */
+.star-rating { display: inline-flex; gap: 2px; }
+.star-rating .star { cursor: pointer; transition: color 0.15s ease-out, transform 0.15s ease-out; }
+.star-rating .star:hover { transform: scale(1.15); }
+.star-rating .star.filled { color: #F4B728; }
+.star-rating .star.empty { color: #333; }
+
+/* Smooth scrolling */
+html { scroll-behavior: smooth; }
